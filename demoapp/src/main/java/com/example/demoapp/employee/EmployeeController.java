@@ -1,10 +1,22 @@
 package com.example.demoapp.employee;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class EmployeeController {
+
+    @GetMapping("/employees/{id}")
+    public EmployeeResponse getEmployeeById(@PathVariable String id) {
+        // validate input
+        // Cleaning data
+
+        EmployeeResponse emp = new EmployeeResponse();
+        emp.setId(Integer.parseInt(id));
+        emp.setName("Tanakrid");
+        return emp;
+    }
 
     @GetMapping("/employees")
     public EmployeeResponse[] listEmployee() {
