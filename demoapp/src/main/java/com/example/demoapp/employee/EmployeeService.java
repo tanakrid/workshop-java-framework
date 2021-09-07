@@ -8,8 +8,12 @@ import java.util.Optional;
 @Service // use when want to change some class that should be service so affect is created this class to be bean since start service
 public class EmployeeService {
 
-    @Autowired
     private EmployeeRepository employeeRepository;
+
+    @Autowired
+    public EmployeeService(EmployeeRepository employeeRepository) {
+        this.employeeRepository = employeeRepository;
+    }
 
     public EmployeeResponse getById(int parseInt) {
         Optional<Employee> result = employeeRepository.findById(parseInt);
