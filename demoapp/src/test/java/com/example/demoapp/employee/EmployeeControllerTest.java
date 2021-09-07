@@ -13,6 +13,8 @@ class EmployeeControllerTest {
     // similar postman
     @Autowired
     private TestRestTemplate restTemplate;
+    @Autowired
+    private EmployeeRepository employeeRepository;
 
     @Test
     void listEmployee() {
@@ -24,7 +26,13 @@ class EmployeeControllerTest {
 
     @Test
     void checkGetEmployeeById() {
-        EmployeeResponse result = restTemplate.getForObject("/employees/"+1, EmployeeResponse.class);
+        // Arrange
+        int id = 1;
+        Employee employee100 = new Employee();
+        employee100.setName("Tanakrid");
+        employeeRepository.save(employee100);
+        // Act
+        EmployeeResponse result = restTemplate.getForObject("/employees/" + id, EmployeeResponse.class);
 
         assertEquals(1, result.getId());
         assertEquals("Tanakrid", result.getName());
