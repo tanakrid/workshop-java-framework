@@ -16,7 +16,7 @@ public class EmployeeController {
         // validate input
         // Cleaning data
 
-        EmployeeResponse response = employeeService.getByid(Integer.parseInt(id));
+        EmployeeResponse response = employeeService.getById(Integer.parseInt(id));
         return response;
     }
 

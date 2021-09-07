@@ -8,6 +8,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 
+import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.ContentResultMatchers.*;
 
@@ -41,7 +42,7 @@ class EmployeeControllerWvbMvcTest {
         EmployeeResponse response = mapper.readValue(json, EmployeeResponse.class);
 
         assertEquals(id, response.getId());
-        assertEquals("Tanakrid", response.getName());
+        assertEquals("Mock name", response.getName());
 
     }
 
